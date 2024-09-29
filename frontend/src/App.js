@@ -1,10 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
 import SecondComponent from './Components/SecondComponent';
+import React from 'react';
 
 function App() {
   function MyComponent() {
-    return <h1>This is my first component</h1>;
+    return(
+      <React.Fragment>
+        <h1 className="myStyle">This is my first component</h1>;
+        <p>This paragraph of this component</p>
+        <li>This is a li tag</li>
+        <div>
+          <p>This is a paragraph</p>
+          <p>This is an another paragraph</p>
+        </div>
+      </React.Fragment>
+    )
   }
   return (
   <div>
