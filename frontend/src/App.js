@@ -1,15 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-import SecondComponent from './Components/SecondComponent';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import React from 'react';
-import AppleComponent from './Components/AppleComponent';
-import Fruit from './Components/Fruit';
+
+// Components
+import Home from './Components/Home';
+import Login from './Components/Login';
+import Listings from './Components/Listings';
+
 
 function App() {
   return(
-    <>
-      <AppleComponent />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={ <Home /> } />
+        <Route path='/login' element={ <Login /> } />
+        <Route path='/listings' element={ <Listings /> } />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
