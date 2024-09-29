@@ -2,10 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  function MyComponent() {
+    return <h1>This is my first component</h1>;
+  }
   return (
   <div>
-    <h1>This is a H1</h1>
-    <p>This is a paragraph</p>
+    <h1>This is the app component</h1>
+    <MyComponent />
   </div>
 );
 }
