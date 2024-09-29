@@ -4,24 +4,20 @@ import SecondComponent from './Components/SecondComponent';
 import React from 'react';
 
 function App() {
-  function MyComponent() {
-    return(
-      <React.Fragment>
-        <h1 className="myStyle">This is my first component</h1>;
-        <p>This paragraph of this component</p>
-        <li>This is a li tag</li>
-        <div>
-          <p>This is a paragraph</p>
-          <p>This is an another paragraph</p>
-        </div>
-      </React.Fragment>
-    )
+
+  function AppleDisplay(num){
+    if(num===0 || num===1){
+      return `John has ${num} apple`
+    } else if(num > 1){
+      return `John has ${num} apples`
+    } else {
+      return 'Отрицательное число'
+    }
   }
+
   return (
   <div>
-    <h1>This is the app component</h1>
-    <MyComponent />
-    <SecondComponent />
+    <h1>{AppleDisplay(-5)}</h1>
   </div>
 );
 }
