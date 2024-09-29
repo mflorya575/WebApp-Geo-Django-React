@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import SecondComponent from './Components/SecondComponent';
 
 function App() {
   function MyComponent() {
@@ -9,6 +10,7 @@ function App() {
   <div>
     <h1>This is the app component</h1>
     <MyComponent />
+    <SecondComponent />
   </div>
 );
 }
