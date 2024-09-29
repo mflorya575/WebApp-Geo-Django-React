@@ -6,7 +6,11 @@ import AppleComponent from './Components/AppleComponent';
 import Fruit from './Components/Fruit';
 
 function App() {
-  return <Fruit name="banana" />
+  return(
+    <>
+      <AppleComponent />
+    </>
+  )
 }
 
 export default App;

@@ -15,3 +15,15 @@ code {
 .myStyle {
   color: red;
 }
+
+.add-btn {
+  background: green;
+  color: white;
+  margin-right: 10px;
+}
+
+.decrease-btn {
+  background: red;
+  color: white;
+  margin-left: 10px;
+}

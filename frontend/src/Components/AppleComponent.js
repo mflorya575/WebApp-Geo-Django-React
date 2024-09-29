@@ -1,20 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function AppleComponent() {
-    function AppleDisplay(num){
-        if(num===0 || num===1){
-          return `John has ${num} apple`
-        } else if(num > 1){
-          return `John has ${num} apples`
+    const [numberOfApples, setNumberOfApples] = useState(0)
+
+    function AppleDisplay(numberOfApples){
+        if(numberOfApples===0 || numberOfApples===1){
+          return `John has ${numberOfApples} apple`
+        } else if(numberOfApples > 1){
+          return `John has ${numberOfApples} apples`
         } else {
-          return 'Отрицательное число'
+          return `John has ${numberOfApples} apples`
         }
       }
 
+    function IncreaseApple(){
+        setNumberOfApples((currentValue) => currentValue + 1)
+    }
+
+    function DecreaseApple(){
+        setNumberOfApples((currentValue) => currentValue - 1)
+    }
+
     return (
-    <div>
-        <h1>{AppleDisplay(7)}</h1>
-    </div>
+    <>
+        <div>
+            <h1>{AppleDisplay(numberOfApples)}</h1>
+        </div>
+        <button
+            onClick={IncreaseApple}
+            className="add-btn"
+        >
+            Increase
+        </button>
+        <button
+            onClick={DecreaseApple}
+            className="decrease-btn"
+        >
+            Decrease
+        </button>
+    </>
   )
 }
 
