@@ -4,11 +4,23 @@ import { Button, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 
+const useStyles = makeStyles({
+  divStyle: {
+    width: '50%',
+    border: '2px solid red',
+    padding: '15px'
+  },
+  btnColor: {
+    background: 'yellow',
+  }
+});
+
 function Home() {
   const[btnColor, setBtnColor] = useState("error")
+  const classes = useStyles();
   return (
   <>
-    <div style={{ width: '50%' , border: '2px solid black' , padding: '15px' }}>
+    <div className={ classes.divStyle }>
       <Typography variant='h4'>
         This is a title
       </Typography>
@@ -24,10 +36,12 @@ function Home() {
       </Typography>
       <Button
       onClick={() => setBtnColor("success")}
-      color={ btnColor } variant="contained" size="medium">GO
+      variant="contained" size="medium"
+      className={ classes.btnColor }>GO
       </Button>
     </div>
-  </>)
+  </>
+  )
 }
 
 export default Home
