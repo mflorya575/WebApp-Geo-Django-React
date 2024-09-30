@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Button, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 
 function Home() {
   const[btnColor, setBtnColor] = useState("error")
   return (
   <>
-    <div>
+    <div style={{ width: '50%' , border: '2px solid black' , padding: '15px' }}>
       <Typography variant='h4'>
         This is a title
       </Typography>
