@@ -24,18 +24,16 @@ function Home() {
   return (
     <>
       <CssBaseline />
-      <Grid container>
-        <Grid item xs={6}>
-          <CustomCard />
+      <Grid direction='column' justifyContent='space-evenly' alignItems='flex-start' container style={{ height: '100vh', backgroundColor: 'grey' }}>
+        <Grid item container>
+          <Grid item xs={5}>
+            <CustomCard />
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <CustomCard />
-        </Grid>
-        <Grid item xs={6}>
-          <CustomCard />
-        </Grid>
-        <Grid item xs={6}>
-          <CustomCard />
+        <Grid item container>
+          <Grid item xs={5}>
+            <CustomCard />
+          </Grid>
         </Grid>
       </Grid>
     </>
