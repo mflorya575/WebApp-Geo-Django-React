@@ -1,45 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+// MUI imports
 import { Button, Typography, Grid, AppBar, Toolbar } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 
+// Components
 import CustomCard from './CustomCard';
+import Header from './Header';
+
+// Assets
 import city from '../Assets/city.jpg';
 
 
 const useStyles = makeStyles({
-  leftNav: {
-    marginRight: 'auto',
-  },
-
-  rightNav: {
-    marginLeft: 'auto',
-    marginRight: '10rem',
-  },
-
-  propertyBtn: {
-    backgroundColor: 'green',
-    color: 'white',
-    width: '15rem',
-    fontSize: '1.1rem',
-    marginRight: '1rem',
-    '&:hover': {
-      backgroundColor: 'blue',
-    },
-  },
-
-  loginBtn: {
-    backgroundColor: 'white',
-    color: 'black',
-    width: '15rem',
-    fontSize: '1.1rem',
-    marginLeft: '1rem',
-    '&:hover': {
-      backgroundColor: 'green',
-    },
-  },
-
   cityImg: {
     width: '100%',
     height: '92vh',
@@ -72,28 +46,6 @@ function Home() {
   const classes = useStyles();
   return (
     <>
-      <CssBaseline />
-      <AppBar position="static" style={{ backgroundColor: 'black' }}>
-        <Toolbar>
-          <div className={classes.leftNav}>
-            <Button color="inherit">
-              <Typography variant='h4'>TSHAN</Typography>
-            </Button>
-          </div>
-          <div>
-            <Button color="inherit">
-              <Typography variant='h6' style={{ marginRight: '2rem' }}>Listings</Typography>
-            </Button>
-            <Button color="inherit">
-              <Typography variant='h6' style={{ marginLeft: '2rem' }}>Agencies</Typography>
-            </Button>
-          </div>
-          <div className={classes.rightNav}>
-            <Button className={classes.propertyBtn}>Add Property</Button>
-            <Button className={classes.loginBtn}>Login</Button>
-          </div>
-        </Toolbar>
-      </AppBar>
       <div style={{ position: 'relative' }}>
         <img src={city} alt="City" className={classes.cityImg} />
         <div className={classes.overlayText}>
