@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // React leaflet
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -17,6 +17,7 @@ import img1 from '../Assets/img1.jpg';
 
 
 function Listings() {
+
   const houseIcon = new Icon({
     iconUrl: houseIconPng,
     iconSize: [40, 40],
@@ -29,30 +30,35 @@ function Listings() {
     iconUrl: officeIconPng,
     iconSize: [40, 40],
   })
+
+  const [latitude, setLatitude] = useState(51.505);
+  const [longitude, setLongitude] = useState(-0.126);
+
+  function GoEast(){
+    setLatitude(51.505);
+    setLongitude(-0.123);
+  }
+
+  function GoCenter(){
+    setLatitude(51.505);
+    setLongitude(-0.126);
+  }
+
   return (
     <Grid container>
       <Grid item xs={4}>
-        <Typography variant='h1'>
-          It is a long established fact that a reader will be distracted by
-          the readable content of a page when looking at its layout. The point
-          of using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it look
-          like readable English. Many desktop publishing packages and web page editors
-          now use Lorem Ipsum as their default model text, and a search for 'lorem
-          ipsum' will uncover many web sites still in their infancy. Various versions
-          have evolved over the years, sometimes by accident, sometimes on purpose
-          (injected humour and the like).
-        </Typography>
+        <Button onClick={GoEast}>GO EAST</Button>
+        <Button onClick={GoCenter}>GO CENTER</Button>
       </Grid>
       <Grid item xs={8}>
         <AppBar position='sticky'>
           <div style={{ height: '100vh' }}>
-            <MapContainer center={[51.505, -0.09]} zoom={14} scrollWheelZoom={true}>
+            <MapContainer center={[51.505, -0.126]} zoom={14} scrollWheelZoom={true}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <Marker icon={officeIcon} position={[51.480, -0.126]}>
+              <Marker icon={officeIcon} position={[latitude, longitude]}>
                 <Popup>
                   <Typography variant='h5'>A title</Typography>
                   <img src={img1} alt='img' style={{ height: '14rem', width: '18rem' }} />
