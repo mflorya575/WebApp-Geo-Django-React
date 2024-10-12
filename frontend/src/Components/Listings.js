@@ -80,7 +80,7 @@ function Listings() {
                       <Typography variant='h5'>{listing.title}</Typography>
                       <img src={listing.picture1} alt='img' style={{ height: '14rem', width: '18rem' }} />
                       <Typography variant='body1'>
-                        {listing.description}
+                        {listing.description.substring(0, 150)}...
                       </Typography>
                       <Button variant='contained' fullWidth>Details</Button>
                     </Popup>

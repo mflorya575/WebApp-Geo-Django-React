@@ -21,7 +21,7 @@ const myListings = [
         id: 1,
         title: 'Cozy Camden Apartment',
         listing_type: 'Apartment',
-        description: 'A bright and spacious 4-room apartment located in the heart of Camden.',
+        description: 'A bright and spacious 4-room apartment located in the heart of Camden. A bright and spacious 4-room apartment located in the heart of Camden. A bright and spacious 4-room apartment located in the heart of Camden. A bright and spacious 4-room apartment located in the heart of Camden.',
         division: 'Inner london',
         borough: 'Camden',
         property_status: 'Rent',
