@@ -14,6 +14,7 @@ import officeIconPng from '../Assets/Mapicons/office.png';
 
 // Assets
 import img1 from '../Assets/img1.jpg';
+import myListings from '../Data/Dummydata';
 
 
 function Listings() {
@@ -58,7 +59,36 @@ function Listings() {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              <Marker icon={officeIcon} position={[latitude, longitude]}>
+
+              {myListings.map((listing)=>{
+                function iconDisplay() {
+                  if (listing.listing_type === 'House'){
+                    return houseIcon;
+                  } else if (listing.listing_type === 'Apartment'){
+                    return apartmentIcon;
+                  } else {
+                    return officeIcon;
+                  }
+                }
+                return (
+                  <Marker
+                  key={listing.id}
+                  icon={iconDisplay()}
+                  position={[ listing.location.coordinates[0], listing.location.coordinates[1] ]}
+                  >
+                    <Popup>
+                      <Typography variant='h5'>{listing.title}</Typography>
+                      <img src={listing.picture1} alt='img' style={{ height: '14rem', width: '18rem' }} />
+                      <Typography variant='body1'>
+                        {listing.description}
+                      </Typography>
+                      <Button variant='contained' fullWidth>Details</Button>
+                    </Popup>
+                  </Marker>
+                )
+              })}
+
+              {/* <Marker icon={officeIcon} position={[latitude, longitude]}>
                 <Popup>
                   <Typography variant='h5'>A title</Typography>
                   <img src={img1} alt='img' style={{ height: '14rem', width: '18rem' }} />
@@ -67,7 +97,7 @@ function Listings() {
                   </Typography>
                   <Button variant='contained' fullWidth>Link</Button>
                 </Popup>
-              </Marker>
+              </Marker> */}
             </MapContainer>
           </div>
         </AppBar>
