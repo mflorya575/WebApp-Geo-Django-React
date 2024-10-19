@@ -5,7 +5,17 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 
 // Mui
-import { Grid, AppBar, Typography, Button } from '@mui/material';
+import {
+  Grid,
+  AppBar,
+  Typography,
+  Button,
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 // Map icons
 import houseIconPng from '../Assets/Mapicons/house.png';
@@ -17,8 +27,31 @@ import img1 from '../Assets/img1.jpg';
 import myListings from '../Data/Dummydata';
 
 
-function Listings() {
+const useStyles = makeStyles({
+  cardStyle: {
+    margin: '0.5rem',
+    border: '1px solid black',
+    position: 'relative',
+  },
+  pictureStyle: {
+    paddingRight: '1rem',
+    paddingLeft: '1rem',
+    height: '20rem',
+    width: '30rem',
+  },
+  priceOverlay: {
+    position: 'absolute',
+    backgroundColor: 'green',
+    zIndex: '1000',
+    color: 'white',
+    top: '100px',
+    left: '20px',
+    padding: '5px',
+  },
+});
 
+function Listings() {
+  const classes = useStyles();
   const houseIcon = new Icon({
     iconUrl: houseIconPng,
     iconSize: [40, 40],
@@ -48,10 +81,56 @@ function Listings() {
   return (
     <Grid container>
       <Grid item xs={4}>
-        <Button onClick={GoEast}>GO EAST</Button>
-        <Button onClick={GoCenter}>GO CENTER</Button>
+        {myListings.map((listing)=>{
+          return (
+            <Card key={listing.id} className={classes.cardStyle}>
+              <CardHeader
+                // action={
+                //   <IconButton aria-label="settings">
+                //     <MoreVertIcon />
+                //   </IconButton>
+                // }
+                title={listing.title}
+              />
+              <CardMedia
+                className={classes.pictureStyle}
+                component="img"
+                image={listing.picture1}
+                alt={listing.title}
+              />
+              <CardContent>
+                <Typography variant="body2">
+                  {listing.description.substring(0,200)}...
+                </Typography>
+              </CardContent>
+
+              {listing.property_status === 'Sale' ? (
+                <Typography className={classes.priceOverlay}>
+                  {listing.listing_type}: $
+                  {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </Typography>
+              ) : (
+                <Typography className={classes.priceOverlay}>
+                  {listing.listing_type}: $
+                  {listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  / {listing.rental_frequency}
+                </Typography>
+              )}
+
+              
+              {/* <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+              </CardActions> */}
+            </Card>
+          )
+        })}
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={8} style={{ marginTop: '0.5rem' }}>
         <AppBar position='sticky'>
           <div style={{ height: '100vh' }}>
             <MapContainer center={[51.505, -0.126]} zoom={14} scrollWheelZoom={true}>
