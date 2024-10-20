@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # Приложения
     'listings.apps.ListingsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
